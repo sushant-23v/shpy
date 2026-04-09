@@ -1,7 +1,7 @@
 # shpy
 
 Welcome to shpy, the ultimate coffee shop experience! This application showcases our specialty coffee menu, provides information about our shop, and connects you with our community.
-
+<!-- add -->
 ## Getting Started
 
 To run the application locally, follow these steps:

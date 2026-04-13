@@ -1,0 +1,28 @@
+.landing-page {
+    text-align: center;
+    padding: 20px;
+    background-color: #f0f0f0;
+}
+
+.landing-header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+}
+
+.landing-content {
+    margin: 20px 0;
+}
+
+.intro-section, .features-section {
+    margin: 20px 0;
+}
+
+.landing-footer {
+    background-color: #222;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+}

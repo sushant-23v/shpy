@@ -1,6 +1,6 @@
 import React from 'react';
 import './LandingPage.css';
-import coffeeImage from './images/coffee.jpg'; // Ensure this image is in the images folder
+import coffeeImage from './images/coffee.jpg'; 
 
 const LandingPage = () => {
   return (

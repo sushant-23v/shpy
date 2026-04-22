@@ -1,0 +1,23 @@
+src/
+  components/
+    layout/
+      Navbar.tsx
+      Footer.tsx
+      Container.tsx
+    sections/
+      Hero.tsx
+      FeaturedRecipes.tsx
+      MenuGrid.tsx
+    ui/
+      Button.tsx
+      Badge.tsx
+      SectionHeading.tsx
+    RecipeCard.tsx
+  data/
+    recipes.ts
+  styles/
+    global.css
+  types/
+    recipe.ts
+  App.tsx
+  main.tsx

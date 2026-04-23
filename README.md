@@ -3,7 +3,7 @@
 Welcome to the AuroAqua landing page project! This repository contains the source code and resources for the landing page of AuroAqua, a water solutions company dedicated to providing clean and sustainable water solutions.
 
 ## Getting Started
-
+//gfkk
 To get started with this project, clone the repository and install the necessary dependencies.
 
 ```bash

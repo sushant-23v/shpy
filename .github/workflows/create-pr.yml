@@ -1,0 +1,71 @@
+name: Create Pull Request - Dev to Main
+
+on:
+  push:
+    branches:
+      - dev
+  workflow_dispatch:  # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  create-pull-request:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for existing PR
+        id: check_pr
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING_PR=$(gh pr list --base main --head dev --state open --json number --jq '.[0].number')
+          if [ -n "$EXISTING_PR" ]; then
+            echo "pr_exists=true" >> $GITHUB_OUTPUT
+            echo "pr_number=$EXISTING_PR" >> $GITHUB_OUTPUT
+            echo "✅ Existing PR #$EXISTING_PR found (dev → main). Skipping creation."
+          else
+            echo "pr_exists=false" >> $GITHUB_OUTPUT
+            echo "🆕 No existing PR found. Will create a new one."
+          fi
+
+      - name: Create Pull Request
+        if: steps.check_pr.outputs.pr_exists == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head dev \
+            --title "Merge dev into main" \
+            --body "## 🚀 Automated Pull Request
+
+          This pull request was **automatically created** by GitHub Actions.
+
+          **Source Branch:** \`dev\`
+          **Target Branch:** \`main\`
+
+          ### Changes
+          This PR merges the latest development changes from \`dev\` into \`main\`.
+
+          ### Checklist
+          - [ ] Code review completed
+          - [ ] Tests passed
+          - [ ] Ready to merge
+
+          ---
+          *Created by GitHub Actions workflow on $(date -u '+%Y-%m-%d %H:%M:%S UTC')*"
+
+      - name: Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check_pr.outputs.pr_exists }}" == "true" ]; then
+            echo "ℹ️ PR #${{ steps.check_pr.outputs.pr_number }} already exists for dev → main."
+          else
+            echo "✅ New pull request created successfully: dev → main"
+          fi

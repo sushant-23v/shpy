@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New York City: A Family Classic</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a2b3c; /* Deep Navy */
+            --accent-color: #c5a880; /* Warm Gold */
+            --text-main: #333333;
+            --text-light: #666666;
+            --bg-light: #f9f9f7;
+            --white: #ffffff;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Lato', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero .tagline {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+        }
+
+        .trip-summary {
+            display: inline-flex;
+            gap: 2rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding: 1rem 2rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Introduction */
+        .intro {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 5rem;
+            font-family: var(--font-serif);
+            line-height: 1.8;
+        }
+
+        /* Day Cards */
+        .day-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .day-header {
+            margin-bottom: 2.5rem;
+            text-align: center;
+        }
+
+        .day-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .time-section {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .time-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .time-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .activity-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .activity-desc {
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .insider-tip {
+            background: var(--bg-light);
+            padding: 1rem;
+            border-left: 3px solid var(--accent-color);
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+
+        .meta-links {
+            font-size: 0.9rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        /* Grid Sections */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+        }
+
+        .info-card h3 {
+            font-family: var(--font-serif);
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Hidden Gems */
+        .hidden-gems {
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 4rem;
+        }
+
+        .hidden-gems .section-title {
+            color: var(--accent-color);
+        }
+
+        .gem-item {
+            margin-bottom: 2rem;
+        }
+
+        .gem-item h4 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .gem-item p {
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .trip-summary { flex-direction: column; gap: 0.5rem; }
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .day-card { padding: 2rem 1.5rem; }
+        }
+
+        @media print {
+            body { background: #fff; }
+            .day-card { box-shadow: none; border: 1px solid #eee; break-inside: avoid; }
+            .hero { padding: 2rem; color: #000; background: #fff; border-bottom: 2px solid #000; }
+            .hero h1 { color: #000; }
+            .hero .tagline { color: #666; }
+            .hidden-gems { background: #f9f9f9; color: #000; }
+            .hidden-gems h4, .hidden-gems .section-title { color: #000; }
+            .hidden-gems p { color: #333; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>NEW YORK CITY</h1>
+        <div class="tagline">The Classic Family Metropolis</div>
+        <div class="trip-summary">
+            <span>5 Days</span>
+            <span>•</span>
+            <span>Family of 4</span>
+            <span>•</span>
+            <span>Classic Highlights</span>
+            <span>•</span>
+            <span>$5,000 Budget</span>
+        </div>
+    </header>
+
+    <div class="container">
+        <p class="intro">
+            There is a distinct electricity to New York that hits you the moment you step onto its pavements. For a family, it is a giant, towering playground of history, culture, and cinematic moments. This itinerary is crafted to pace you through the city's undeniable classics—from the torch of Lady Liberty to the green expanse of Central Park—without losing the spontaneous joy of a New York slice eaten on a street corner.
+        </p>
+
+        <div class="day-card">
+            <div class="day-header">
+                <h2>Day 1 — Midtown Marvels & Neon Dreams</h2>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-label">☀ Morning / Arrival</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Grand+Central+Terminal+New+York" target="_blank">Grand Central Terminal & Bryant Park</a></h3>
+                <p class="activity-desc">After settling into your hotel, start your trip at the beating heart of the city. Stand in the Main Concourse of Grand Central and look up at the celestial ceiling. Then, take a short stroll to Bryant Park, a manicured oasis flanked by the magnificent New York Public Library.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Head down to the dining concourse in Grand Central to whisper secrets to the kids across the famous "Whispering Gallery" arches.</div>
+                <div class="meta-links">
+                    <span>⏱ 2-3 hours</span>
+                    <span>🔗 <a href="https://www.grandcentralterminal.com/" target="_blank">Official Site</a></span>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌤 Afternoon</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Rockefeller+Center+New+York" target="_blank">Rockefeller Center & Fifth Avenue</a></h3>
+                <p class="activity-desc">Walk up Fifth Avenue, taking in the spectacular window displays. Arrive at Rockefeller Center, an Art Deco masterpiece. Watch the skaters (in winter) or enjoy the sunken plaza cafes (in summer). It's the quintessential New York backdrop.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Skip the Empire State Building lines today and instead go to Top of the Rock for views that actually *include* the Empire State Building.</div>
+                <div class="meta-links">
+                    <span>⏱ 2 hours</span>
+                    <span>🔗 <a href="https://www.rockefellercenter.com/" target="_blank">Guide</a></span>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌙 Evening</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Times+Square+New+York" target="_blank">Times Square & Classic Diner Dinner</a></h3>
+                <p class="activity-desc">Embrace the chaos. The glowing billboards of Times Square are a rite of passage. Let the kids soak in the overwhelming scale of the neon lights. Afterwards, escape a few avenues over to Hell's Kitchen for a classic, hearty meal at a genuine NYC diner.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Ellen's Stardust Diner is famously fun for kids with singing waitstaff, but expect a line. For better food and less wait, try the Westway Diner.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <h2>Day 2 — Harbors, History & The Skyline</h2>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-label">☀ Morning</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Statue+of+Liberty+New+York" target="_blank">Statue of Liberty & Ellis Island</a></h3>
+                <p class="activity-desc">Catch the salty breeze on the ferry departing from Battery Park. Seeing Lady Liberty up close is genuinely awe-inspiring. The true emotional anchor, however, is the Ellis Island National Museum of Immigration, offering a profound look at the millions who built America.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Book the first ferry of the day (usually 9:00 AM) to beat the massive crowds and security lines.</div>
+                <div class="meta-links">
+                    <span>⏱ 4 hours</span>
+                    <span>🔗 <a href="https://www.statuecitycruises.com/" target="_blank">Official Ferry Tickets</a></span>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌤 Afternoon</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=9%2F11+Memorial+New+York" target="_blank">Financial District & 9/11 Memorial</a></h3>
+                <p class="activity-desc">Walk up through Wall Street, passing the Charging Bull. Then, transition to the solemn, beautiful space of the 9/11 Memorial. The twin reflecting pools are a powerful, necessary part of modern New York history. (The museum is excellent but intense; use your discretion with younger children).</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Step inside the Oculus nearby—the striking, ribbed white transit hub designed by Santiago Calatrava.</div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌙 Evening</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Brooklyn+Bridge+Park+New+York" target="_blank">Brooklyn Bridge Walk & DUMBO Pizza</a></h3>
+                <p class="activity-desc">As the sun begins to lower, walk across the wooden planks of the Brooklyn Bridge from Manhattan to Brooklyn. The skyline views are unmatched. Once in DUMBO, reward the family with arguably the best pizza in the world.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Juliana's and Grimaldi's are next door to each other. Juliana's (started by the original Grimaldi) is the local favorite.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <h2>Day 3 — Dinosaurs, Parks & Panoramas</h2>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-label">☀ Morning</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=American+Museum+of+Natural+History+New+York" target="_blank">American Museum of Natural History</a></h3>
+                <p class="activity-desc">Lose yourselves in the towering dinosaur halls, the giant blue whale, and the dazzling gems. It is a massive, sprawling institution that sparks pure wonder. Don't miss the spectacular new Richard Gilder Center for Science, Education, and Innovation.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> You cannot see it all in one day. Pick 3-4 halls to focus on before museum fatigue sets in.</div>
+                <div class="meta-links">
+                    <span>⏱ 3-4 hours</span>
+                    <span>🔗 <a href="https://www.amnh.org/" target="_blank">Official Site</a></span>
+                </div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌤 Afternoon</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Central+Park+Bethesda+Terrace+New+York" target="_blank">Central Park Ramble</a></h3>
+                <p class="activity-desc">Grab hot dogs or pretzels from a cart and enter Central Park. Wander down to Bethesda Terrace and the Angel of the Waters fountain. Rent rowboats at the Loeb Boathouse or simply let the kids run free on the Great Lawn.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Central Park is vast. Stick to the lower half (below 86th street) for the most iconic, movie-famous sights.</div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌙 Evening</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Upper+West+Side+New+York" target="_blank">Upper West Side Dining</a></h3>
+                <p class="activity-desc">Enjoy a relaxed evening in the residential, tree-lined streets of the Upper West Side. It's much calmer than Midtown and packed with great family-friendly Italian spots and legendary bakeries.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Grab dessert at Levain Bakery on 74th Street for the most famously decadent, gooey chocolate chip cookies in the city.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <h2>Day 4 — Elevated Views & West Side Wanderings</h2>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-label">☀ Morning</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=The+High+Line+New+York" target="_blank">The High Line & Chelsea Market</a></h3>
+                <p class="activity-desc">Walk the High Line, a brilliantly repurposed elevated railway track turned public park, offering unique perspectives of the city streets below. Descend into Chelsea Market for a grazing-style lunch where everyone in the family can pick exactly what they want from artisanal vendors.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Start at the northern end (Hudson Yards) and walk south to end up at Chelsea Market just in time for lunch.</div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌤 Afternoon</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Little+Island+New+York" target="_blank">Little Island & The Village</a></h3>
+                <p class="activity-desc">Explore Little Island, New York's newest park floating on tulip-shaped concrete pots over the Hudson River. Afterwards, meander through the winding, historic streets of Greenwich Village, stopping at Washington Square Park to listen to street musicians.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Washington Square Park is the best place in the city for people-watching. Grab a coffee and sit by the fountain.</div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌙 Evening</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=Broadway+Theaters+New+York" target="_blank">Broadway or Off-Broadway Magic</a></h3>
+                <p class="activity-desc">Cap off your trip with the magic of live theater. Whether it's a massive Disney production on Broadway or a quirky, interactive Off-Broadway show, seeing a performance here is unparalleled.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> For last-minute, discounted tickets, brave the TKTS booth in Times Square, or use the TodayTix app to save time.</div>
+            </div>
+        </div>
+
+        <div class="day-card">
+            <div class="day-header">
+                <h2>Day 5 — Art & Farewells</h2>
+            </div>
+            
+            <div class="time-section">
+                <div class="time-label">☀ Morning</div>
+                <h3 class="activity-title"><a href="https://www.google.com/maps/search/?api=1&query=The+Metropolitan+Museum+of+Art+New+York" target="_blank">The Metropolitan Museum of Art</a></h3>
+                <p class="activity-desc">Spend your final morning at The Met. It is awe-inspiring. For families, the Temple of Dendur (an actual Egyptian temple inside a massive glass room) and the Arms and Armor hall are usually massive hits.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> If visiting in warmer months, take the elevator to the Cantor Roof Garden for art installations and sweeping views of Central Park.</div>
+            </div>
+
+            <div class="time-section">
+                <div class="time-label">🌤 Afternoon</div>
+                <h3 class="activity-title">Last Minute Souvenirs & Departure</h3>
+                <p class="activity-desc">Enjoy a final quintessential New York bagel or deli sandwich. Pick up any last-minute souvenirs before heading to the airport or train station, carrying a lifetime of family memories.</p>
+                <div class="insider-tip">💡 <strong>Insider tip:</strong> Give yourselves at least an hour more than you think you need to get to JFK or Newark—NYC traffic is notoriously unpredictable.</div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Where to Stay</h2>
+        <div class="grid-2">
+            <div class="info-card">
+                <h3><a href="https://www.booking.com/searchresults.html?ss=Beacon+Hotel+New+York" target="_blank">Hotel Beacon</a></h3>
+                <p><strong>Upper West Side</strong> • A fantastic family option offering oversized rooms and suites with kitchenettes, located in a quiet, safe neighborhood just blocks from Central Park and the Natural History Museum.</p>
+            </div>
+            <div class="info-card">
+                <h3><a href="https://www.booking.com/searchresults.html?ss=LUMA+Hotel+Times+Square" target="_blank">LUMA Hotel Times Square</a></h3>
+                <p><strong>Midtown</strong> • For those who want to be right in the action. Modern, clean, and surprisingly quiet given its proximity to Bryant Park and Broadway. Great access to subway lines.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Practical Information</h2>
+        <div class="grid-3">
+            <div class="info-card">
+                <h3>✈️ Getting There</h3>
+                <p>JFK, Newark (EWR), and LaGuardia (LGA) serve the city. Yellow cabs offer flat rates from JFK to Manhattan, but an Uber/Lyft XL is often best for a family of four with luggage.</p>
+            </div>
+            <div class="info-card">
+                <h3>🚇 Getting Around</h3>
+                <p>The Subway is the lifeblood of NYC. You no longer need a MetroCard; simply tap any contactless credit card or Apple/Google Pay at the turnstiles. Kids under 44 inches ride free.</p>
+            </div>
+            <div class="info-card">
+                <h3>💰 Budget Guide</h3>
+                <p>Your $5,000 budget is comfortable. Expect to spend $300-$450/night on lodging. Allocate $150-$200/day for dining (mixing casual slices with sit-down meals) and the rest on major attraction tickets.</p>
+            </div>
+            <div class="info-card">
+                <h3>🌦 Best Time to Visit</h3>
+                <p>Spring (April-May) and Autumn (Sept-Oct) offer the best walking weather. Winter brings holiday magic (and cold winds), while summer can be hot and humid.</p>
+            </div>
+            <div class="info-card">
+                <h3>💳 Money & Tipping</h3>
+                <p>NYC is largely cashless now, though carrying small bills for street carts is wise. Tipping in restaurants is standard at 18-20% minimum.</p>
+            </div>
+            <div class="info-card">
+                <h3>📋 Need to Know</h3>
+                <p>Comfortable walking shoes are non-negotiable. You will easily walk 15,000 to 20,000 steps a day. Pack layers, as museums and subways can be heavily air-conditioned.</p>
+            </div>
+        </div>
+
+        <div class="hidden-gems">
+            <h2 class="section-title">Family Hidden Gems</h2>
+            <div class="gem-item">
+                <h4>The Transit Museum (Brooklyn)</h4>
+                <p>Located in a decommissioned subway station, this interactive museum lets kids climb into vintage subway cars dating back to the early 1900s. Often missed by first-timers but a massive hit with children.</p>
+            </div>
+            <div class="gem-item">
+                <h4>Governors Island</h4>
+                <p>A short ferry ride from Lower Manhattan, this car-free island offers bike rentals, food trucks, and "Slide Hill"—featuring the longest slide in NYC. Perfect for burning off energy with stellar Statue of Liberty views.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        Crafted for a Family of 4 | 5 Days | Classic NYC Highlights
+        <br><br>
+        ✦
+    </footer>
+
+</body>
+</html>
